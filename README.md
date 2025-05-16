@@ -19,5 +19,5 @@ An AI-powered platform that intelligently matches job seekers with suitable job 
 - **Job Matching**: AI-based recommendations for job seekers.
 - **Admin Panel**: Admin can manage users and job postings.
 
-## Project Structure
+## Project Structure 
 
