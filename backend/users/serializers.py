@@ -39,3 +39,8 @@ class RegisterSerializer(serializers.ModelSerializer):
             bio=validated_data.get('bio', '')
         )
         return user
+    
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'user_type', 'bio' ]
