@@ -156,3 +156,9 @@ SIMPLE_JWT = {
     "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For dev
+DEFAULT_FROM_EMAIL = 'noreply@aijobmatcher.com'

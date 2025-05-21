@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import RegisterSerializer
-
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 
@@ -17,9 +17,12 @@ from .serializers import RegisterSerializer
 
 
 
+
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [permissions.IsAdminUser]
 
 
 User = get_user_model()
@@ -32,6 +35,7 @@ class RegisterView(generics.CreateAPIView):
 
 
 class UserProfileView(generics.RetrieveAPIView):
+    authentication_classes = [JWTAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserProfileSerializer
 
@@ -39,7 +43,9 @@ class UserProfileView(generics.RetrieveAPIView):
         return self.request.user
     
 
+
 class UserProfileUpdatedView(generics.UpdateAPIView):
+    authentication_classes = [JWTAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserProfileSerializer
 
